@@ -4,15 +4,8 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=eshicare061324;",
-			"accountKey": {
-				"type": "AzureKeyVaultSecret",
-				"store": {
-					"referenceName": "AzureKeyVault1",
-					"type": "LinkedServiceReference"
-				},
-				"secretName": "labaccount202401secret"
-			}
+			"serviceEndpoint": "https://eshicare061324.blob.core.windows.net/",
+			"accountKind": "StorageV2"
 		}
 	}
 }
