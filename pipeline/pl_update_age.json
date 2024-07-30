@@ -1,0 +1,105 @@
+{
+	"name": "pl_update_age",
+	"properties": {
+		"activities": [
+			{
+				"name": "get_employee",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('select * from dbo.emp where name = ', \n        '''',\n        pipeline().parameters.p_name,\n        ''''\n)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb_sql",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "calculate_age",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "get_employee",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_age",
+					"value": {
+						"value": "@string(sub(\n        int(formatDateTime(utcNow(), 'yyyy')),\n        int(formatDateTime(activity('get_employee').output.firstRow.DoB,'yyyy'))\n    )\n)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "update_employee",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "calculate_age",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('update dbo.emp set age = ',\n        variables('v_age'),\n                ' where name = ',\n        '''',\n        pipeline().parameters.p_name,\n        ''''\n)",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb_sql",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"p_name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"v_age": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
