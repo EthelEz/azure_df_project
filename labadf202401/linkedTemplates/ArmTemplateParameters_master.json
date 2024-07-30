@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "labadf202401"
+		},
+		"ln_sql_db_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://lab-akv-accesspolicy01.vault.azure.net/"
+		},
+		"ln_asa__properties_typeProperties_serviceEndpoint": {
+			"value": "https://eshicare061324.blob.core.windows.net/"
+		},
+		"ln_sql_db_properties_typeProperties_server": {
+			"value": "eshicareserver.database.windows.net"
+		},
+		"ln_sql_db_properties_typeProperties_database": {
+			"value": "eshicaredb"
+		},
+		"ln_sql_db_properties_typeProperties_userName": {
+			"value": "eshicareadmin"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "eshicareserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "eshicaredb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "eshicareadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
