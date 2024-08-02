@@ -7,17 +7,29 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "labadf202401"
 		},
-		"ln_sql_db_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'ln_sql_db'"
-		},
 		"AzureSqlDatabase1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
 		},
+		"ln_sql_db_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ln_sql_db'"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://lab-akv-accesspolicy01.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "eshicareserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "eshicaredb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "eshicareadmin"
 		},
 		"ln_asa__properties_typeProperties_serviceEndpoint": {
 			"type": "string",
@@ -32,18 +44,6 @@
 			"defaultValue": "eshicaredb"
 		},
 		"ln_sql_db_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "eshicareadmin"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "eshicareserver.database.windows.net"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "eshicaredb"
-		},
-		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "eshicareadmin"
 		},
@@ -74,14 +74,23 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"ln_sql_db_password": {
-						"value": "[parameters('ln_sql_db_password')]"
-					},
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
+					"ln_sql_db_password": {
+						"value": "[parameters('ln_sql_db_password')]"
+					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
 					"ln_asa__properties_typeProperties_serviceEndpoint": {
 						"value": "[parameters('ln_asa__properties_typeProperties_serviceEndpoint')]"
@@ -94,15 +103,6 @@
 					},
 					"ln_sql_db_properties_typeProperties_userName": {
 						"value": "[parameters('ln_sql_db_properties_typeProperties_userName')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_server": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_database": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
-					},
-					"AzureSqlDatabase1_properties_typeProperties_userName": {
-						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					}
 				}
 			},
