@@ -1,0 +1,12 @@
+{
+	"name": "source_data_dir",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ln_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
