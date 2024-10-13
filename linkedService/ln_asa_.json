@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"serviceEndpoint": "https://eshicare061324.blob.core.windows.net/",
+			"serviceEndpoint": "https://wearable150824.blob.core.windows.net/",
 			"accountKind": "StorageV2"
 		}
 	}
